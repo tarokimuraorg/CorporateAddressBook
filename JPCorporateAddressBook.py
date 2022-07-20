@@ -30,19 +30,17 @@ class JPCorporateAddressBook:
         for row in self._csv_list:
 
             corporate_name = row[2]
+            corporate_name = corporate_name.strip()
             corporate_name = corporate_name.replace('\u3000', ' ')
             corporate_name = corporate_name.replace('（株）', '株式会社')
 
-            corporate_address = row[3] + ' ' + row[4] + ' ' + row[5] + ' ' + row[6]
+            corporate_address = row[3] + ' '
+            corporate_address = corporate_address + row[4] + ' '
+            corporate_address = corporate_address + row[5] + ' '
+            corporate_address = corporate_address + row[6]
+            corporate_address = corporate_address.strip()
 
             address_page = JPCorporateAddressPage(corporate_name, corporate_address)
             address_book.append(address_page)
-
-            """
-            print('企業名 : {}'.format(corporate_name))
-            print('住所 : {}'.format(corporate_address))
-            print(csv_list[cnt])
-            print('\n')
-            """
 
         return address_book
