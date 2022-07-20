@@ -7,12 +7,12 @@ with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
 
     #print('件数 : {}'.format(len(csv_list)))
 
-    for cnt in range(0,10):
+    for cnt in range(10,20):
 
         corporate_name = csv_list[cnt][2]
-        corporate_name = corporate_name.strip()
         corporate_name = corporate_name.replace('\u3000', ' ')
         corporate_name = corporate_name.replace('（株）', '株式会社')
+        corporate_name = corporate_name.strip()
 
         corporate_address = csv_list[cnt][3] + ' '
         corporate_address = corporate_address + csv_list[cnt][4] + ' '
