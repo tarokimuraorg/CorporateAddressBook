@@ -30,9 +30,9 @@ class JPCorporateAddressBook:
         for row in self._csv_list:
 
             corporate_name = row[2]
-            corporate_name = corporate_name.strip()
             corporate_name = corporate_name.replace('\u3000', ' ')
             corporate_name = corporate_name.replace('（株）', '株式会社')
+            corporate_name = corporate_name.strip()
 
             corporate_address = row[3] + ' '
             corporate_address = corporate_address + row[4] + ' '
