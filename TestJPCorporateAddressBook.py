@@ -2,7 +2,7 @@ import csv
 from ErrorMessageCreator import ErrorMessageCreator
 from JPCorporateAddressPage import JPCorporateAddressPage
 
-class JPCorporateAddressBook:
+class TestJPCorporateAddressBook:
 
     def __init__(self):
 
