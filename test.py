@@ -1,6 +1,8 @@
 import csv
 from JPCorporateAddressBook import JPCorporateAddressBook
-#from TestJPCorporateAddressBook import TestJPCorporateAddressBook
+from TestJPCorporateAddressBook import TestJPCorporateAddressBook
+
+test_address_book = TestJPCorporateAddressBook().createAddressBook()
 
 with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
 
@@ -11,32 +13,11 @@ with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
 
     for cnt in range(0,10):
 
-        corporate_name = csv_list[cnt][2]
-        corporate_name = corporate_name.replace('\u3000', ' ')
-        corporate_name = corporate_name.replace('（株）', '株式会社')
-        corporate_name = corporate_name.strip()
-
-        corporate_address = csv_list[cnt][3] + ' '
-        corporate_address = corporate_address + csv_list[cnt][4] + ' '
-        corporate_address = corporate_address + csv_list[cnt][5] + ' '
-        corporate_address = corporate_address + csv_list[cnt][6]
-        corporate_address = corporate_address.strip()
-
         print('{} : {}'.format(cnt, csv_list[cnt]))
         print('')
-        print('企業名 : {}'.format(corporate_name))
-        print('住所 : {}'.format(corporate_address))
+        print('企業名 : {}'.format(test_address_book[cnt].name))
+        print('住所 : {}'.format(test_address_book[cnt].address))
         print('')
-
-"""
-test_address_book = TestJPCorporateAddressBook().createAddressBook()
-
-for cnt in range(0,10):
-
-    print('企業名 : {}'.format(test_address_book[cnt].name))
-    print('住所 : {}'.format(test_address_book[cnt].address))
-    print('')
-"""
 
 address_book = JPCorporateAddressBook().createAddressBook()
 
