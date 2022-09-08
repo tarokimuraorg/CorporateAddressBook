@@ -33,6 +33,7 @@ class JPCorporateAddressBook:
                 corporate_name = str(row[0])
                 corporate_name = corporate_name.replace('\u3000', ' ')
                 corporate_name = corporate_name.replace('（株）', '株式会社')
+                corporate_name = corporate_name.replace('（社）', '社団法人')
                 corporate_name = corporate_name.strip()
 
                 corporate_address = str(row[1]) + ' '
