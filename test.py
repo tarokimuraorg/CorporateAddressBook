@@ -3,6 +3,7 @@ from JPCorporateAddressBook import JPCorporateAddressBook
 from TestJPCorporateAddressBook import TestJPCorporateAddressBook
 
 test_address_book = TestJPCorporateAddressBook().createAddressBook()
+address_book = JPCorporateAddressBook().createAddressBook()
 
 with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
 
@@ -11,22 +12,24 @@ with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
 
     #print('件数 : {}'.format(len(csv_list)))
 
-    for cnt in range(62,72):
+    for cnt1, cnt2 in zip(range(112,122), range(110,120)):
 
-        print('{} : {}'.format(cnt, csv_list[cnt]))
-        print('')
-
-        print('{}. 企業名 : {}'.format(cnt, test_address_book[cnt].name))
-        print('{}. 住所 : {}'.format(cnt, test_address_book[cnt].address))
+        print()
+        print('{} : {}'.format(cnt1, csv_list[cnt1]))
         print()
 
-print('===================================================')
-print()
+        print('{}. 企業名 : {}'.format(cnt1, test_address_book[cnt1].name))
+        print('{}. 住所 : {}'.format(cnt1, test_address_book[cnt1].address))
+        print()
 
-address_book = JPCorporateAddressBook().createAddressBook()
+        if (test_address_book[cnt1].name == address_book[cnt2].name
+            and test_address_book[cnt1].address == address_book[cnt2].address):
 
-for cnt in range(60,70):
+            print('企業名と住所が一致しました。')
 
-    print('{}. 企業名 : {}'.format(cnt, address_book[cnt].name))
-    print('{}. 住所 : {}'.format(cnt, address_book[cnt].address))
-    print()
+        else:
+            print('企業名と住所が一致しません。')
+        
+        print()
+
+        print('===================================================')
