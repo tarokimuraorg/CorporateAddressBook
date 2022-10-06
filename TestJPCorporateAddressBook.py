@@ -32,9 +32,7 @@ class TestJPCorporateAddressBook:
             for row in self._csv_list:
 
                 corporate_name = str(row[2])
-                corporate_name = corporate_name.replace('\u3000', ' ')
-                corporate_name = corporate_name.replace('（株）', '株式会社')
-                corporate_name = corporate_name.replace('（社）', '社団法人')
+                corporate_name = self.__corporateNameConvertor(corporate_name)
                 corporate_name = corporate_name.strip()
 
                 corporate_address = str(row[3]) + ' '
@@ -52,3 +50,11 @@ class TestJPCorporateAddressBook:
 
             print('{}'.format(ve))
             return []
+
+    def __corporateNameConvertor(self, corporate_name : str) -> str:
+
+        result = corporate_name.replace('\u3000', ' ')
+        result = result.replace('（株）', '株式会社')
+        result = result.replace('（社）', '社団法人')
+
+        return result
