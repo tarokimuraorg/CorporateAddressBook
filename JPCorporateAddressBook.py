@@ -14,6 +14,7 @@ class JPCorporateAddressBook:
         try:
 
             data_frame = pandas.read_csv('./csv/jigyosyo.csv', usecols=[2,3,4,5,6], names=['name','address1','address2','address3','address4'])
+            data_frame = data_frame.replace('(.+?)（.*?郵便局私書箱第\d+号）',{'address4' : r'\1'},regex=True)
             csv_data = data_frame.drop_duplicates()
             self._csv_list = csv_data.values.tolist()
 
