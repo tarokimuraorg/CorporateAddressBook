@@ -1,3 +1,4 @@
+import re
 import csv
 from ErrorMessageCreator import ErrorMessageCreator
 from JPCorporateAddressPage import JPCorporateAddressPage
@@ -35,11 +36,15 @@ class TestJPCorporateAddressBook:
                 corporate_name = self.__corporateNameConvertor(corporate_name)
                 corporate_name = corporate_name.strip()
 
+                corporate_name = re.sub('[ 　]+', ' ', corporate_name)
+
                 corporate_address = str(row[3]) + ' '
                 corporate_address = corporate_address + str(row[4]) + ' '
                 corporate_address = corporate_address + str(row[5]) + ' '
                 corporate_address = corporate_address + str(row[6])
                 corporate_address = corporate_address.strip()
+
+                corporate_address = re.sub('[ 　]+', ' ', corporate_address)
 
                 address_page = JPCorporateAddressPage(corporate_name, corporate_address)
                 address_book.append(address_page)
@@ -51,10 +56,11 @@ class TestJPCorporateAddressBook:
             print('{}'.format(ve))
             return []
 
-    def __corporateNameConvertor(self, corporate_name : str) -> str:
+    def __corporateNameConvertor(self,corporate_name : str) -> str:
 
         result = corporate_name.replace('\u3000', ' ')
-        result = result.replace('（株）', '株式会社')
-        result = result.replace('（社）', '社団法人')
+        result = result.replace('（株）', '株式会社 ')
+        result = result.replace('（社）', '社団法人 ')
+        result = result.replace('（財）', '財団法人 ')
 
         return result
