@@ -10,7 +10,7 @@ with open('./csv/jigyosyo.csv', 'r', encoding='utf8') as csv_file:
     csv_data = csv.reader(csv_file, delimiter=',', doublequote=True, lineterminator='\n', quotechar='"', skipinitialspace=True)
     csv_list = list(csv_data)
 
-    for cnt1, cnt2 in zip(range(135,145), range(132,142)):
+    for cnt1, cnt2 in zip(range(301,311), range(297,307)):
 
         print()
         print('{} : {}'.format(cnt1, csv_list[cnt1]))
